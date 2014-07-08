@@ -70,7 +70,7 @@ def download_file(url, directory, filename):
             f.write(buff)
             status = r'  %11s / %11s [%6.2f%%]' % (pretty_file_size(file_size_dl), pretty_file_size(file_size), file_size_dl * 100.0 / file_size)
             status = status + chr(8) * (len(status) + 1)
-            print_msg(status),
+            print_msg(status)
 
     print_msg('')
 
