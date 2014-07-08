@@ -35,7 +35,7 @@ __DOWNLOAD_DIR__ = 'downloads'
 
 
 def print_msg(msg, *args):
-    print (msg % args).encode(__ENCODING__, errors='replace')
+    print(msg % args).encode(__ENCODING__, errors='replace')
 
 
 # prettify the file size with a suffix
@@ -57,7 +57,7 @@ def download_file(url, directory, filename):
     with open(os.path.join(directory, filename), 'wb') as f:
         meta = stream.info()
         file_size = int(meta.getheaders('Content-Length')[0])
-        print 'Downloading: %s' % (filename)
+        print_msg('Downloading: %s' % (filename))
 
         file_size_dl = 0
         block_size = 8192
@@ -70,9 +70,9 @@ def download_file(url, directory, filename):
             f.write(buff)
             status = r'  %11s / %11s [%6.2f%%]' % (pretty_file_size(file_size_dl), pretty_file_size(file_size), file_size_dl * 100.0 / file_size)
             status = status + chr(8) * (len(status) + 1)
-            print status,
+            print_msg(status),
 
-    print ''
+    print_msg('')
 
 
 # refresh the index file (download new versions of the gamekeys)
